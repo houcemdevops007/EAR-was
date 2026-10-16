@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns="http://java.sun.com/xml/ns/javaee"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/application_6.xsd"
+             version="6">
+  <application-name>efi-welcome</application-name>
+  <description>EFI Welcome — Page d'accueil de la formation WebSphere : premier déploiement EAR.</description>
+  <display-name>efi-welcome</display-name>
+  <module>
+    <web>
+      <web-uri>efi-welcome.war</web-uri>
+      <context-root>/efi-welcome</context-root>
+    </web>
+  </module>
+</application>

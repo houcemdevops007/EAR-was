@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns="http://java.sun.com/xml/ns/javaee"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/application_6.xsd"
+             version="6">
+  <application-name>efi-files</application-name>
+  <description>EFI File Center — Gestionnaire de fichiers pédagogiques : upload et téléchargement sécurisés.</description>
+  <display-name>efi-files</display-name>
+  <module>
+    <web>
+      <web-uri>efi-files.war</web-uri>
+      <context-root>/efi-files</context-root>
+    </web>
+  </module>
+  <security-role>
+    <description>Utilisateurs autorisés à gérer les fichiers (actif si la sécurité applicative WebSphere est activée)</description>
+    <role-name>FileCenterUser</role-name>
+  </security-role>
+</application>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns="http://java.sun.com/xml/ns/javaee"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/application_6.xsd"
+             version="6">
+  <application-name>efi-dashboard</application-name>
+  <description>EFI Server Dashboard — Tableau de bord JVM et serveur d'applications.</description>
+  <display-name>efi-dashboard</display-name>
+  <module>
+    <web>
+      <web-uri>efi-dashboard.war</web-uri>
+      <context-root>/efi-dashboard</context-root>
+    </web>
+  </module>
+</application>

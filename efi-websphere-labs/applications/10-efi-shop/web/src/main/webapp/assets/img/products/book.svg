@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Illustration : book">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4c1d95"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient>
+    <radialGradient id="glow" cx=".8" cy=".1" r=".7"><stop offset="0" stop-color="#ffffff" stop-opacity=".35"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#bg)"/>
+  <rect width="400" height="300" fill="url(#glow)"/>
+  <circle cx="40" cy="270" r="70" fill="#ffffff" opacity=".07"/>
+  <circle cx="360" cy="40" r="40" fill="#ffffff" opacity=".08"/>
+  <g>
+  <path d="M200 90c-30-18-70-22-110-14v150c40-8 80-4 110 14z" fill="#ffffff"/>
+  <path d="M200 90c30-18 70-22 110-14v150c-40-8-80-4-110 14z" fill="#ede9fe"/>
+  <path d="M200 90v150" stroke="#7c3aed" stroke-width="3"/>
+  <g stroke="#a78bfa" stroke-width="4" stroke-linecap="round"><path d="M110 105h70M110 122h60M110 139h70M110 156h50"/></g>
+  <g stroke="#c4b5fd" stroke-width="4" stroke-linecap="round"><path d="M220 105h70M220 122h60M220 139h70"/></g>
+  <rect x="226" y="152" width="56" height="40" rx="6" fill="#7c3aed" opacity=".8"/>
+  <text x="254" y="178" font-family="sans-serif" font-size="14" font-weight="800" fill="#ffffff" text-anchor="middle">ND</text>
+  </g>
+</svg>

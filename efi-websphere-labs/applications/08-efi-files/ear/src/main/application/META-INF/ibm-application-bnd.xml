@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Liaisons WebSphere de l'application EFI File Center.
+  Le rôle FileCenterUser est mappé par défaut sur tous les utilisateurs authentifiés
+  du registre WebSphere. Ce mappage n'a d'effet que si la sécurité applicative est
+  activée (Sécurité > Sécurité globale > Activer la sécurité des applications).
+  Il peut être modifié dans la console : Applications > efi-files >
+  Mappage des rôles de sécurité aux utilisateurs et aux groupes.
+-->
+<application-bnd xmlns="http://websphere.ibm.com/xml/ns/javaee"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://websphere.ibm.com/xml/ns/javaee http://websphere.ibm.com/xml/ns/javaee/ibm-application-bnd_1_0.xsd"
+                 version="1.0">
+  <security-role name="FileCenterUser">
+    <special-subject type="ALL_AUTHENTICATED_USERS"/>
+  </security-role>
+</application-bnd>

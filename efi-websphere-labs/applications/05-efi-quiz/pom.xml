@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <!--
+    EFI Quiz WebSphere — projet Maven multi-module autonome (WAR + EAR).
+    Cible : IBM WebSphere Application Server ND 8.5.5 / Java EE 6 / Servlet 3.0.
+    Bytecode Java 6 (class file version 50) : compiler avec un JDK 7 ou 8.
+  -->
+  <groupId>fr.efiacademy.lab</groupId>
+  <artifactId>efi-quiz-parent</artifactId>
+  <version>1.0.0</version>
+  <packaging>pom</packaging>
+  <name>EFI Quiz WebSphere (parent)</name>
+  <description>Quiz pédagogique WebSphere ND : sessions et formulaires.</description>
+
+  <modules>
+    <module>web</module>
+    <module>ear</module>
+  </modules>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <maven.compiler.source>1.6</maven.compiler.source>
+    <maven.compiler.target>1.6</maven.compiler.target>
+    <efi.app.id>efi-quiz</efi.app.id>
+    <efi.context.root>/efi-quiz</efi.context.root>
+    <servlet.api.version>3.0.1</servlet.api.version>
+    <junit.version>4.13.2</junit.version>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <!-- API Servlet 3.0 (javax.*) fournie par WebSphere : jamais embarquée -->
+      <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>javax.servlet-api</artifactId>
+        <version>${servlet.api.version}</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>${junit.version}</version>
+        <scope>test</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin><artifactId>maven-clean-plugin</artifactId><version>3.3.2</version></plugin>
+        <plugin><artifactId>maven-resources-plugin</artifactId><version>3.3.1</version></plugin>
+        <plugin>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.13.0</version>
+          <configuration>
+            <source>1.6</source>
+            <target>1.6</target>
+            <encoding>UTF-8</encoding>
+            <showWarnings>true</showWarnings>
+            <compilerArgs>
+              <arg>-Xlint:-options</arg>
+            </compilerArgs>
+          </configuration>
+        </plugin>
+        <plugin><artifactId>maven-surefire-plugin</artifactId><version>3.2.5</version></plugin>
+        <plugin>
+          <artifactId>maven-war-plugin</artifactId>
+          <version>3.4.0</version>
+          <configuration>
+            <failOnMissingWebXml>true</failOnMissingWebXml>
+          </configuration>
+        </plugin>
+        <plugin><artifactId>maven-ear-plugin</artifactId><version>3.3.0</version></plugin>
+        <plugin><artifactId>maven-jar-plugin</artifactId><version>3.4.1</version></plugin>
+        <plugin><artifactId>maven-install-plugin</artifactId><version>3.1.2</version></plugin>
+        <plugin><artifactId>maven-deploy-plugin</artifactId><version>3.1.2</version></plugin>
+        <plugin>
+          <!-- Vérifie que le code n'utilise que des API présentes dans Java SE 6 -->
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>animal-sniffer-maven-plugin</artifactId>
+          <version>1.23</version>
+          <configuration>
+            <signature>
+              <groupId>org.codehaus.mojo.signature</groupId>
+              <artifactId>java16</artifactId>
+              <version>1.1</version>
+            </signature>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+
+    <plugins>
+      <plugin>
+        <!-- Interdit toute dépendance Jakarta EE 9+ (jakarta.*) et impose un JDK 7/8 -->
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <version>3.5.0</version>
+        <executions>
+          <execution>
+            <id>efi-websphere-855-rules</id>
+            <goals><goal>enforce</goal></goals>
+            <configuration>
+              <rules>
+                <requireMavenVersion><version>[3.6.3,)</version></requireMavenVersion>
+                <requireJavaVersion>
+                  <version>[1.7,1.9)</version>
+                  <message>Utilisez un JDK 7 ou 8 (javac capable de produire du bytecode Java 6 pour WebSphere 8.5.5).</message>
+                </requireJavaVersion>
+                <bannedDependencies>
+                  <excludes>
+                    <exclude>jakarta.*:*</exclude>
+                    <exclude>org.springframework.boot:*</exclude>
+                    <exclude>org.apache.tomcat.embed:*</exclude>
+                  </excludes>
+                  <message>Dépendance incompatible avec WebSphere 8.5.5 (Jakarta EE 9+, Spring Boot ou Tomcat embarqué).</message>
+                </bannedDependencies>
+              </rules>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>

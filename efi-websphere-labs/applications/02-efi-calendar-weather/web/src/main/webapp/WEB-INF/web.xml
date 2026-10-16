@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0" metadata-complete="true">
+
+  <display-name>EFI Calendar &amp; Weather</display-name>
+  <description>Application 02 — Calendrier interactif et météo réelle de Paris (Open-Meteo).</description>
+
+  <context-param>
+    <param-name>efi.app.name</param-name>
+    <param-value>EFI Calendar &amp; Weather</param-value>
+  </context-param>
+  <context-param>
+    <param-name>efi.app.short</param-name>
+    <param-value>Calendar &amp; Weather</param-value>
+  </context-param>
+  <context-param>
+    <param-name>efi.app.version</param-name>
+    <param-value>1.0.0</param-value>
+  </context-param>
+
+  <!-- Paramètres du service météo (surchargeables par propriétés système JVM -Defi.weather.*) -->
+  <context-param>
+    <param-name>efi.weather.connectTimeoutMs</param-name>
+    <param-value>4000</param-value>
+  </context-param>
+  <context-param>
+    <param-name>efi.weather.readTimeoutMs</param-name>
+    <param-value>6000</param-value>
+  </context-param>
+  <context-param>
+    <param-name>efi.weather.cacheSeconds</param-name>
+    <param-value>600</param-value>
+  </context-param>
+
+  <filter>
+    <filter-name>SecurityHeadersFilter</filter-name>
+    <filter-class>fr.efiacademy.lab.common.SecurityHeadersFilter</filter-class>
+    <init-param>
+      <!-- Le navigateur peut interroger Open-Meteo directement si le serveur n'a pas accès à Internet -->
+      <param-name>csp</param-name>
+      <param-value>default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self';
+        connect-src 'self' https://api.open-meteo.com; font-src 'self' data:; object-src 'none';
+        frame-ancestors 'self'; base-uri 'self'; form-action 'self'</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>SecurityHeadersFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+    <dispatcher>ERROR</dispatcher>
+  </filter-mapping>
+
+  <servlet>
+    <servlet-name>HealthServlet</servlet-name>
+    <servlet-class>fr.efiacademy.lab.common.HealthServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>WeatherServlet</servlet-name>
+    <servlet-class>fr.efiacademy.lab.calendar.WeatherServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HealthServlet</servlet-name>
+    <url-pattern>/api/health</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>WeatherServlet</servlet-name>
+    <url-pattern>/api/weather</url-pattern>
+  </servlet-mapping>
+
+  <session-config>
+    <session-timeout>30</session-timeout>
+  </session-config>
+
+  <mime-mapping>
+    <extension>svg</extension>
+    <mime-type>image/svg+xml</mime-type>
+  </mime-mapping>
+  <mime-mapping>
+    <extension>json</extension>
+    <mime-type>application/json</mime-type>
+  </mime-mapping>
+
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+
+  <error-page>
+    <error-code>404</error-code>
+    <location>/erreur/404.jsp</location>
+  </error-page>
+  <error-page>
+    <error-code>500</error-code>
+    <location>/erreur/500.jsp</location>
+  </error-page>
+  <error-page>
+    <exception-type>java.lang.Throwable</exception-type>
+    <location>/erreur/500.jsp</location>
+  </error-page>
+
+  <jsp-config>
+    <jsp-property-group>
+      <url-pattern>*.jsp</url-pattern>
+      <url-pattern>*.jspf</url-pattern>
+      <page-encoding>UTF-8</page-encoding>
+      <trim-directive-whitespaces>true</trim-directive-whitespaces>
+    </jsp-property-group>
+  </jsp-config>
+</web-app>

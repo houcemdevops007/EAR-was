@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>fr.efiacademy.lab</groupId>
+    <artifactId>efi-calendar-weather-parent</artifactId>
+    <version>1.0.0</version>
+  </parent>
+
+  <artifactId>efi-calendar-weather-ear</artifactId>
+  <packaging>ear</packaging>
+  <name>EFI Calendar &amp; Weather (module EAR)</name>
+
+  <dependencies>
+    <dependency>
+      <groupId>fr.efiacademy.lab</groupId>
+      <artifactId>efi-calendar-weather-web</artifactId>
+      <version>${project.version}</version>
+      <type>war</type>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <finalName>efi-calendar-weather</finalName>
+    <plugins>
+      <plugin>
+        <artifactId>maven-ear-plugin</artifactId>
+        <configuration>
+          <version>6</version>
+          <defaultLibBundleDir>lib</defaultLibBundleDir>
+          <!-- Le descripteur META-INF/application.xml est fourni dans src/main/application -->
+          <generateApplicationXml>false</generateApplicationXml>
+          <modules>
+            <webModule>
+              <groupId>fr.efiacademy.lab</groupId>
+              <artifactId>efi-calendar-weather-web</artifactId>
+              <bundleFileName>efi-calendar-weather.war</bundleFileName>
+              <contextRoot>/efi-calendar</contextRoot>
+            </webModule>
+          </modules>
+          <archive>
+            <manifestEntries>
+              <Implementation-Title>EFI Calendar &amp; Weather</Implementation-Title>
+              <Implementation-Version>${project.version}</Implementation-Version>
+              <Implementation-Vendor>EFI Academy</Implementation-Vendor>
+            </manifestEntries>
+          </archive>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

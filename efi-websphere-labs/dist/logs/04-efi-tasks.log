@@ -1,0 +1,103 @@
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] EFI Task Manager (parent)                                          [pom]
+[INFO] EFI Task Manager (module WAR)                                      [war]
+[INFO] EFI Task Manager (module EAR)                                      [ear]
+[INFO] 
+[INFO] -----------------< fr.efiacademy.lab:efi-tasks-parent >-----------------
+[INFO] Building EFI Task Manager (parent) 1.0.0                           [1/3]
+[INFO]   from pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.3.2:clean (default-clean) @ efi-tasks-parent ---
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (efi-websphere-855-rules) @ efi-tasks-parent ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireMavenVersion passed
+[INFO] Rule 1: org.apache.maven.enforcer.rules.version.RequireJavaVersion passed
+[INFO] Rule 2: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] ------------------< fr.efiacademy.lab:efi-tasks-web >-------------------
+[INFO] Building EFI Task Manager (module WAR) 1.0.0                       [2/3]
+[INFO]   from web/pom.xml
+[INFO] --------------------------------[ war ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.3.2:clean (default-clean) @ efi-tasks-web ---
+[INFO] Deleting /Users/houcem/EAR-was/efi-websphere-labs/applications/04-efi-tasks/web/target
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (efi-websphere-855-rules) @ efi-tasks-web ---
+[INFO] Rule 2: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ efi-tasks-web ---
+[INFO] skip non existing resourceDirectory /Users/houcem/EAR-was/efi-websphere-labs/applications/04-efi-tasks/web/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ efi-tasks-web ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 10 source files with javac [debug target 1.6] to target/classes
+[INFO] 
+[INFO] --- animal-sniffer:1.23:check (check-java16-api) @ efi-tasks-web ---
+[INFO] Checking unresolved references to org.codehaus.mojo.signature:java16:1.1
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ efi-tasks-web ---
+[INFO] skip non existing resourceDirectory /Users/houcem/EAR-was/efi-websphere-labs/applications/04-efi-tasks/web/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ efi-tasks-web ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 2 source files with javac [debug target 1.6] to target/test-classes
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ efi-tasks-web ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junit4.JUnit4Provider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running fr.efiacademy.lab.tasks.TaskStoreTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.222 s -- in fr.efiacademy.lab.tasks.TaskStoreTest
+[INFO] Running fr.efiacademy.lab.common.CommonUtilsTest
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.031 s -- in fr.efiacademy.lab.common.CommonUtilsTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 15, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- war:3.4.0:war (default-war) @ efi-tasks-web ---
+[INFO] Packaging webapp
+[INFO] Assembling webapp [efi-tasks-web] in [/Users/houcem/EAR-was/efi-websphere-labs/applications/04-efi-tasks/web/target/efi-tasks]
+[INFO] Processing war project
+[INFO] Copying webapp resources [/Users/houcem/EAR-was/efi-websphere-labs/applications/04-efi-tasks/web/src/main/webapp]
+[INFO] Building war: /Users/houcem/EAR-was/efi-websphere-labs/applications/04-efi-tasks/web/target/efi-tasks.war
+[INFO] 
+[INFO] ------------------< fr.efiacademy.lab:efi-tasks-ear >-------------------
+[INFO] Building EFI Task Manager (module EAR) 1.0.0                       [3/3]
+[INFO]   from ear/pom.xml
+[INFO] --------------------------------[ ear ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.3.2:clean (default-clean) @ efi-tasks-ear ---
+[INFO] Deleting /Users/houcem/EAR-was/efi-websphere-labs/applications/04-efi-tasks/ear/target
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (efi-websphere-855-rules) @ efi-tasks-ear ---
+[INFO] Rule 2: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- ear:3.3.0:generate-application-xml (default-generate-application-xml) @ efi-tasks-ear ---
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ efi-tasks-ear ---
+[INFO] skip non existing resourceDirectory /Users/houcem/EAR-was/efi-websphere-labs/applications/04-efi-tasks/ear/src/main/resources
+[INFO] 
+[INFO] --- ear:3.3.0:ear (default-ear) @ efi-tasks-ear ---
+[INFO] Copying artifact [war:fr.efiacademy.lab:efi-tasks-web:1.0.0] to [efi-tasks.war]
+[INFO] Copy ear sources to /Users/houcem/EAR-was/efi-websphere-labs/applications/04-efi-tasks/ear/target/efi-tasks
+[INFO] Building jar: /Users/houcem/EAR-was/efi-websphere-labs/applications/04-efi-tasks/ear/target/efi-tasks.ear
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for EFI Task Manager (parent) 1.0.0:
+[INFO] 
+[INFO] EFI Task Manager (parent) .......................... SUCCESS [  1.365 s]
+[INFO] EFI Task Manager (module WAR) ...................... SUCCESS [  9.411 s]
+[INFO] EFI Task Manager (module EAR) ...................... SUCCESS [  0.929 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  12.040 s
+[INFO] Finished at: 2026-10-15T15:06:33+02:00
+[INFO] ------------------------------------------------------------------------

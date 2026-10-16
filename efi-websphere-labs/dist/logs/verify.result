@@ -1,0 +1,10 @@
+VERIFY|efi-welcome|FAIL|16|17
+VERIFY|efi-calendar-weather|FAIL|16|17
+VERIFY|efi-chat|FAIL|16|17
+VERIFY|efi-tasks|FAIL|16|17
+VERIFY|efi-quiz|FAIL|16|17
+VERIFY|efi-dashboard|FAIL|16|17
+VERIFY|efi-notes|FAIL|16|17
+VERIFY|efi-files|FAIL|16|17
+VERIFY|efi-calculator|FAIL|16|17
+VERIFY|efi-shop|FAIL|16|17

@@ -1,0 +1,33 @@
+▶ test-calc-core.js
+  ✓ Quatre opérations et priorités
+  ✓ Décimales françaises et précision
+  ✓ Nombres négatifs et signe unaire
+  ✓ Pourcentages façon calculatrice de bureau
+  ✓ Division par zéro et erreurs de syntaxe
+  ✓ Refus de tout code : seuls chiffres et opérateurs sont acceptés
+  ✓ Très grands nombres : résultat fini affiché en notation scientifique
+  ✓ Aperçu tolérant et fermeture automatique
+  ✓ Formatage français
+  ✓ Inversion du signe du dernier nombre
+calc-core : 10 réussi(s), 0 échec(s)
+▶ test-calendar-core.js
+  ✓ Pâques 2024, 2025, 2026
+  ✓ Jours fériés 2026 (11 jours, lundi de Pâques, Ascension, Pentecôte)
+  ✓ Années bissextiles et jours par mois
+  ✓ Semaine ISO (cas limites de début/fin d’année)
+  ✓ Jour de la semaine (lundi = 0)
+  ✓ Grille mensuelle : 6 semaines de 7 jours commençant un lundi
+  ✓ Ajout de jours et écart entre dates
+calendar-core : 7 réussi(s), 0 échec(s)
+▶ test-notes-core.js
+  ✓ Validation : titre obligatoire, longueur et catégorie
+  ✓ Création et modification conservent createdAt
+  ✓ Recherche par titre insensible à la casse et aux accents
+  ✓ Filtres catégorie et favoris
+  ✓ Tri : favoris d’abord, puis récents ; tri par titre
+  ✓ Statistiques par catégorie
+  ✓ Export JSON puis import (aller-retour)
+  ✓ Import : rejet des fichiers invalides et des entrées incorrectes
+  ✓ Fusion : les notes importées remplacent celles de même id
+  ✓ Dates relatives en français
+notes-core : 10 réussi(s), 0 échec(s)

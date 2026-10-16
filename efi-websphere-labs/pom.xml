@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <!-- Agrégateur optionnel : chaque application reste un projet Maven autonome. -->
+  <groupId>fr.efiacademy.lab</groupId>
+  <artifactId>efi-websphere-labs</artifactId>
+  <version>1.0.0</version>
+  <packaging>pom</packaging>
+  <name>EFI Academy — WebSphere Application Lab</name>
+  <modules>
+    <module>applications/01-efi-welcome</module>
+    <module>applications/02-efi-calendar-weather</module>
+    <module>applications/03-efi-chat</module>
+    <module>applications/04-efi-tasks</module>
+    <module>applications/05-efi-quiz</module>
+    <module>applications/06-efi-dashboard</module>
+    <module>applications/07-efi-notes</module>
+    <module>applications/08-efi-files</module>
+    <module>applications/09-efi-calculator</module>
+    <module>applications/10-efi-shop</module>
+  </modules>
+</project>

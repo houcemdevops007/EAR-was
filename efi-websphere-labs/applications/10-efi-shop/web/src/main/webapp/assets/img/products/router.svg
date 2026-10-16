@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Illustration : router">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#134e4a"/><stop offset="1" stop-color="#14b8a6"/></linearGradient>
+    <radialGradient id="glow" cx=".8" cy=".1" r=".7"><stop offset="0" stop-color="#ffffff" stop-opacity=".35"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#bg)"/>
+  <rect width="400" height="300" fill="url(#glow)"/>
+  <circle cx="40" cy="270" r="70" fill="#ffffff" opacity=".07"/>
+  <circle cx="360" cy="40" r="40" fill="#ffffff" opacity=".08"/>
+  <g>
+  <g fill="none" stroke="#ffffff" stroke-width="7" stroke-linecap="round" opacity=".85">
+    <path d="M165 95a50 50 0 0 1 70 0"/><path d="M145 72a80 80 0 0 1 110 0"/>
+  </g>
+  <circle cx="200" cy="112" r="7" fill="#ffffff"/>
+  <path d="M120 150h160a14 14 0 0 1 14 14v30a14 14 0 0 1-14 14H120a14 14 0 0 1-14-14v-30a14 14 0 0 1 14-14z" fill="#ffffff"/>
+  <g stroke="#ffffff" stroke-width="8" stroke-linecap="round"><path d="M130 150l-14-46M270 150l14-46"/></g>
+  <g fill="#14b8a6"><circle cx="140" cy="180" r="5"/><circle cx="160" cy="180" r="5"/><circle cx="180" cy="180" r="5"/></g>
+  <rect x="210" y="176" width="60" height="8" rx="4" fill="#cbd5e1"/>
+  </g>
+</svg>

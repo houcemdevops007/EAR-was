@@ -1,0 +1,50 @@
+<%--
+  Fragment commun : <head>, en-tête EFI Academy et ouverture de <main>.
+  Variables attendues (déclarées par la page incluante) :
+    String pageTitle, pageDescription, appShort ; String[][] navLinks ;
+    String navActive ; boolean useCsrf ; String bodyClass
+--%><%@ page import="fr.efiacademy.lab.common.ServerInfo, fr.efiacademy.lab.common.Html, fr.efiacademy.lab.common.Csrf" %><%
+    String efiCtx = request.getContextPath();
+    String efiBadge = ServerInfo.badgeLabel();
+    String efiCsrf = useCsrf ? Csrf.token(request.getSession(true)) : "";
+%><!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= Html.esc(pageTitle) %> · EFI Academy</title>
+  <meta name="description" content="<%= Html.esc(pageDescription) %>">
+  <meta name="theme-color" content="#0b1437">
+  <meta name="context-path" content="<%= Html.esc(efiCtx) %>">
+  <meta name="csrf-token" content="<%= Html.esc(efiCsrf) %>">
+  <link rel="icon" type="image/svg+xml" href="<%= efiCtx %>/assets/img/favicon.svg">
+  <link rel="stylesheet" href="<%= efiCtx %>/assets/css/efi-base.css">
+  <link rel="stylesheet" href="<%= efiCtx %>/assets/css/app.css">
+</head>
+<body class="<%= Html.esc(bodyClass) %>">
+<a class="skip-link" href="#main">Aller au contenu principal</a>
+<header class="efi-header">
+  <div class="container">
+    <a class="brand" href="<%= efiCtx %>/" aria-label="Accueil <%= Html.esc(appShort) %>">
+      <span class="brand-logo" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7v10l9 5 9-5V7z"/><path d="M3 7l9 5 9-5M12 12v10"/></svg>
+      </span>
+      <span class="brand-text">
+        <span class="brand-kicker">EFI Academy · WebSphere Application Lab</span>
+        <span class="brand-app">EFI <span><%= Html.esc(appShort) %></span></span>
+      </span>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="main-nav">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+    <nav id="main-nav" class="main-nav" aria-label="Navigation principale">
+<%  for (int efiI = 0; efiI < navLinks.length; efiI++) {
+        boolean efiCur = navLinks[efiI][1].equals(navActive); %>
+      <a href="<%= efiCtx + navLinks[efiI][1] %>"<%= efiCur ? " aria-current=\"page\"" : "" %>><%= Html.esc(navLinks[efiI][0]) %></a>
+<%  } %>
+      <span class="host-badge host-badge-mobile" title="Serveur ayant traité la requête"><span class="dot"></span><%= Html.esc(efiBadge) %></span>
+    </nav>
+    <span class="host-badge" title="Hôte et serveur d'applications ayant traité la requête"><span class="dot" aria-hidden="true"></span><span class="sr-only">Servi par </span><%= Html.esc(efiBadge) %></span>
+  </div>
+</header>
+<main id="main" tabindex="-1">

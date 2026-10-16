@@ -1,0 +1,17 @@
+<%--
+  Fragment commun : fermeture de <main>, pied de page et scripts.
+  Variable attendue : String[] pageScripts (chemins relatifs au contexte).
+--%></main>
+<footer class="efi-footer">
+  <div class="container">
+    <div><strong>EFI Academy</strong> | Formation IBM WebSphere ND 8.5.5</div>
+    <div class="footer-meta">Contexte <%= Html.esc(efiCtx.length() == 0 ? "/" : efiCtx) %> · servi par <%= Html.esc(ServerInfo.hostname()) %> · © <span data-year>2026</span></div>
+  </div>
+</footer>
+<div class="toast-zone" role="status" aria-live="polite"></div>
+<script src="<%= efiCtx %>/assets/js/efi-common.js"></script>
+<%  for (int efiJ = 0; efiJ < pageScripts.length; efiJ++) { %>
+<script src="<%= efiCtx + pageScripts[efiJ] %>"></script>
+<%  } %>
+</body>
+</html>

@@ -1,0 +1,103 @@
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] EFI Quiz WebSphere (parent)                                        [pom]
+[INFO] EFI Quiz WebSphere (module WAR)                                    [war]
+[INFO] EFI Quiz WebSphere (module EAR)                                    [ear]
+[INFO] 
+[INFO] -----------------< fr.efiacademy.lab:efi-quiz-parent >------------------
+[INFO] Building EFI Quiz WebSphere (parent) 1.0.0                         [1/3]
+[INFO]   from pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.3.2:clean (default-clean) @ efi-quiz-parent ---
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (efi-websphere-855-rules) @ efi-quiz-parent ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireMavenVersion passed
+[INFO] Rule 1: org.apache.maven.enforcer.rules.version.RequireJavaVersion passed
+[INFO] Rule 2: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] -------------------< fr.efiacademy.lab:efi-quiz-web >-------------------
+[INFO] Building EFI Quiz WebSphere (module WAR) 1.0.0                     [2/3]
+[INFO]   from web/pom.xml
+[INFO] --------------------------------[ war ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.3.2:clean (default-clean) @ efi-quiz-web ---
+[INFO] Deleting /Users/houcem/EAR-was/efi-websphere-labs/applications/05-efi-quiz/web/target
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (efi-websphere-855-rules) @ efi-quiz-web ---
+[INFO] Rule 2: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ efi-quiz-web ---
+[INFO] skip non existing resourceDirectory /Users/houcem/EAR-was/efi-websphere-labs/applications/05-efi-quiz/web/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ efi-quiz-web ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 12 source files with javac [debug target 1.6] to target/classes
+[INFO] 
+[INFO] --- animal-sniffer:1.23:check (check-java16-api) @ efi-quiz-web ---
+[INFO] Checking unresolved references to org.codehaus.mojo.signature:java16:1.1
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ efi-quiz-web ---
+[INFO] skip non existing resourceDirectory /Users/houcem/EAR-was/efi-websphere-labs/applications/05-efi-quiz/web/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ efi-quiz-web ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 2 source files with javac [debug target 1.6] to target/test-classes
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ efi-quiz-web ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junit4.JUnit4Provider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running fr.efiacademy.lab.quiz.QuizTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.180 s -- in fr.efiacademy.lab.quiz.QuizTest
+[INFO] Running fr.efiacademy.lab.common.CommonUtilsTest
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.101 s -- in fr.efiacademy.lab.common.CommonUtilsTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 14, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- war:3.4.0:war (default-war) @ efi-quiz-web ---
+[INFO] Packaging webapp
+[INFO] Assembling webapp [efi-quiz-web] in [/Users/houcem/EAR-was/efi-websphere-labs/applications/05-efi-quiz/web/target/efi-quiz]
+[INFO] Processing war project
+[INFO] Copying webapp resources [/Users/houcem/EAR-was/efi-websphere-labs/applications/05-efi-quiz/web/src/main/webapp]
+[INFO] Building war: /Users/houcem/EAR-was/efi-websphere-labs/applications/05-efi-quiz/web/target/efi-quiz.war
+[INFO] 
+[INFO] -------------------< fr.efiacademy.lab:efi-quiz-ear >-------------------
+[INFO] Building EFI Quiz WebSphere (module EAR) 1.0.0                     [3/3]
+[INFO]   from ear/pom.xml
+[INFO] --------------------------------[ ear ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.3.2:clean (default-clean) @ efi-quiz-ear ---
+[INFO] Deleting /Users/houcem/EAR-was/efi-websphere-labs/applications/05-efi-quiz/ear/target
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (efi-websphere-855-rules) @ efi-quiz-ear ---
+[INFO] Rule 2: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- ear:3.3.0:generate-application-xml (default-generate-application-xml) @ efi-quiz-ear ---
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ efi-quiz-ear ---
+[INFO] skip non existing resourceDirectory /Users/houcem/EAR-was/efi-websphere-labs/applications/05-efi-quiz/ear/src/main/resources
+[INFO] 
+[INFO] --- ear:3.3.0:ear (default-ear) @ efi-quiz-ear ---
+[INFO] Copying artifact [war:fr.efiacademy.lab:efi-quiz-web:1.0.0] to [efi-quiz.war]
+[INFO] Copy ear sources to /Users/houcem/EAR-was/efi-websphere-labs/applications/05-efi-quiz/ear/target/efi-quiz
+[INFO] Building jar: /Users/houcem/EAR-was/efi-websphere-labs/applications/05-efi-quiz/ear/target/efi-quiz.ear
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for EFI Quiz WebSphere (parent) 1.0.0:
+[INFO] 
+[INFO] EFI Quiz WebSphere (parent) ........................ SUCCESS [  1.340 s]
+[INFO] EFI Quiz WebSphere (module WAR) .................... SUCCESS [  8.208 s]
+[INFO] EFI Quiz WebSphere (module EAR) .................... SUCCESS [  1.039 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  10.894 s
+[INFO] Finished at: 2026-10-15T15:06:50+02:00
+[INFO] ------------------------------------------------------------------------

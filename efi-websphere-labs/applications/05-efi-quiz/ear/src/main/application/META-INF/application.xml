@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns="http://java.sun.com/xml/ns/javaee"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/application_6.xsd"
+             version="6">
+  <application-name>efi-quiz</application-name>
+  <description>EFI Quiz WebSphere — Quiz pédagogique WebSphere ND : sessions et formulaires.</description>
+  <display-name>efi-quiz</display-name>
+  <module>
+    <web>
+      <web-uri>efi-quiz.war</web-uri>
+      <context-root>/efi-quiz</context-root>
+    </web>
+  </module>
+</application>

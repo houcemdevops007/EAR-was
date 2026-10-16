@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <!--
+    Banc d'intégration HORS LIVRABLES.
+    Déploie les 10 WAR de dist/war dans un Tomcat 7 embarqué (Servlet 3.0 / JSP 2.2, API javax.*,
+    même niveau de spécification que WebSphere 8.5.5), précompile toutes les JSP en Java 6 (JspC)
+    et rejoue des scénarios HTTP réels. Ne remplace pas un test sur WebSphere : il le prépare.
+    Usage : ./scripts/run-integration-tests.sh  (après ./scripts/build-all.sh)
+  -->
+  <groupId>fr.efiacademy.lab</groupId>
+  <artifactId>efi-integration-tests</artifactId>
+  <version>1.0.0</version>
+  <packaging>jar</packaging>
+  <name>EFI Academy — banc d'intégration (Tomcat 7 embarqué)</name>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <tomcat.version>7.0.109</tomcat.version>
+    <efi.dist.dir>${project.basedir}/../../dist</efi.dist.dir>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.apache.tomcat.embed</groupId>
+      <artifactId>tomcat-embed-core</artifactId>
+      <version>${tomcat.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.tomcat.embed</groupId>
+      <artifactId>tomcat-embed-jasper</artifactId>
+      <version>${tomcat.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.tomcat.embed</groupId>
+      <artifactId>tomcat-embed-logging-juli</artifactId>
+      <version>${tomcat.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.13.2</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.13.0</version>
+      </plugin>
+      <plugin>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>3.3.1</version>
+      </plugin>
+      <plugin>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.2.5</version>
+        <configuration>
+          <systemPropertyVariables>
+            <efi.dist.dir>${efi.dist.dir}</efi.dist.dir>
+          </systemPropertyVariables>
+          <includes>
+            <include>**/*IT.java</include>
+          </includes>
+          <runOrder>alphabetical</runOrder>
+          <trimStackTrace>false</trimStackTrace>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

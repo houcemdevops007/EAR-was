@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0" metadata-complete="true">
+
+  <display-name>EFI File Center</display-name>
+  <description>Application 08 — Gestionnaire de fichiers pédagogiques : téléversement et téléchargement sécurisés.</description>
+
+  <context-param>
+    <param-name>efi.app.name</param-name>
+    <param-value>EFI File Center</param-value>
+  </context-param>
+  <context-param>
+    <param-name>efi.app.short</param-name>
+    <param-value>File Center</param-value>
+  </context-param>
+  <context-param>
+    <param-name>efi.app.version</param-name>
+    <param-value>1.0.0</param-value>
+  </context-param>
+  <context-param>
+    <description>Répertoire de stockage HORS de l'EAR (surchargeable par -Defi.files.dir=...)</description>
+    <param-name>efi.files.dir</param-name>
+    <param-value>/var/efi-academy/files</param-value>
+  </context-param>
+  <context-param>
+    <description>Taille maximale par fichier en octets (5 Mo par défaut)</description>
+    <param-name>efi.files.maxBytes</param-name>
+    <param-value>5242880</param-value>
+  </context-param>
+  <context-param>
+    <description>Nombre maximal de fichiers stockés</description>
+    <param-name>efi.files.maxCount</param-name>
+    <param-value>200</param-value>
+  </context-param>
+  <context-param>
+    <description>Extensions autorisées (liste blanche)</description>
+    <param-name>efi.files.allowedExtensions</param-name>
+    <param-value>pdf,txt,md,csv,log,json,xml,png,jpg,jpeg,gif,zip,docx,xlsx,pptx,odt</param-value>
+  </context-param>
+  <context-param>
+    <description>Réseaux autorisés (environnement de laboratoire)</description>
+    <param-name>efi.files.allowedNetworks</param-name>
+    <param-value>127.0.0.0/8,::1,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16</param-value>
+  </context-param>
+
+  <filter>
+    <filter-name>SecurityHeadersFilter</filter-name>
+    <filter-class>fr.efiacademy.lab.common.SecurityHeadersFilter</filter-class>
+  </filter>
+  <filter>
+    <filter-name>LabAccessFilter</filter-name>
+    <filter-class>fr.efiacademy.lab.files.LabAccessFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>SecurityHeadersFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+    <dispatcher>ERROR</dispatcher>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>LabAccessFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+  </filter-mapping>
+
+  <servlet>
+    <servlet-name>HealthServlet</servlet-name>
+    <servlet-class>fr.efiacademy.lab.common.HealthServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>FileServlet</servlet-name>
+    <servlet-class>fr.efiacademy.lab.files.FileServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+    <multipart-config>
+      <max-file-size>52428800</max-file-size>
+      <max-request-size>53477376</max-request-size>
+      <file-size-threshold>1048576</file-size-threshold>
+    </multipart-config>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HealthServlet</servlet-name>
+    <url-pattern>/api/health</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>FileServlet</servlet-name>
+    <url-pattern>/api/files</url-pattern>
+    <url-pattern>/api/files/*</url-pattern>
+  </servlet-mapping>
+
+  <session-config>
+    <session-timeout>30</session-timeout>
+  </session-config>
+
+  <mime-mapping>
+    <extension>svg</extension>
+    <mime-type>image/svg+xml</mime-type>
+  </mime-mapping>
+  <mime-mapping>
+    <extension>json</extension>
+    <mime-type>application/json</mime-type>
+  </mime-mapping>
+
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+
+  <error-page>
+    <error-code>403</error-code>
+    <location>/erreur/403.jsp</location>
+  </error-page>
+  <error-page>
+    <error-code>404</error-code>
+    <location>/erreur/404.jsp</location>
+  </error-page>
+  <error-page>
+    <error-code>500</error-code>
+    <location>/erreur/500.jsp</location>
+  </error-page>
+  <error-page>
+    <exception-type>java.lang.Throwable</exception-type>
+    <location>/erreur/500.jsp</location>
+  </error-page>
+
+  <jsp-config>
+    <jsp-property-group>
+      <url-pattern>*.jsp</url-pattern>
+      <url-pattern>*.jspf</url-pattern>
+      <page-encoding>UTF-8</page-encoding>
+      <trim-directive-whitespaces>true</trim-directive-whitespaces>
+    </jsp-property-group>
+  </jsp-config>
+
+  <!--
+    Sécurité déclarative Java EE : appliquée uniquement si la « sécurité applicative »
+    est activée dans WebSphere (Sécurité > Sécurité globale). Le rôle FileCenterUser est
+    mappé par défaut sur « tous les utilisateurs authentifiés » (ibm-application-bnd.xml
+    de l'EAR) et peut être remappé dans la console. Sans sécurité applicative, l'accès est
+    limité aux réseaux du laboratoire par LabAccessFilter.
+  -->
+  <security-constraint>
+    <display-name>Point de santé public</display-name>
+    <web-resource-collection>
+      <web-resource-name>health</web-resource-name>
+      <url-pattern>/api/health</url-pattern>
+    </web-resource-collection>
+  </security-constraint>
+  <security-constraint>
+    <display-name>Accès au centre de fichiers</display-name>
+    <web-resource-collection>
+      <web-resource-name>efi-files</web-resource-name>
+      <url-pattern>/*</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>FileCenterUser</role-name>
+    </auth-constraint>
+  </security-constraint>
+  <login-config>
+    <auth-method>BASIC</auth-method>
+    <realm-name>EFI File Center</realm-name>
+  </login-config>
+  <security-role>
+    <description>Utilisateurs autorisés à gérer les fichiers</description>
+    <role-name>FileCenterUser</role-name>
+  </security-role>
+</web-app>

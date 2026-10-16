@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Illustration : stickers">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9d174d"/><stop offset="1" stop-color="#f472b6"/></linearGradient>
+    <radialGradient id="glow" cx=".8" cy=".1" r=".7"><stop offset="0" stop-color="#ffffff" stop-opacity=".35"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#bg)"/>
+  <rect width="400" height="300" fill="url(#glow)"/>
+  <circle cx="40" cy="270" r="70" fill="#ffffff" opacity=".07"/>
+  <circle cx="360" cy="40" r="40" fill="#ffffff" opacity=".08"/>
+  <g>
+  <g transform="rotate(-10 150 140)"><rect x="95" y="85" width="110" height="110" rx="24" fill="#ffffff"/>
+    <text x="150" y="148" font-family="sans-serif" font-size="22" font-weight="900" fill="#db2777" text-anchor="middle">EAR</text></g>
+  <g transform="rotate(12 255 130)"><circle cx="255" cy="130" r="55" fill="#fde68a"/>
+    <text x="255" y="138" font-family="sans-serif" font-size="20" font-weight="900" fill="#92400e" text-anchor="middle">WAR</text></g>
+  <g transform="rotate(-4 220 215)"><rect x="160" y="185" width="130" height="56" rx="28" fill="#a5f3fc"/>
+    <text x="225" y="220" font-family="sans-serif" font-size="17" font-weight="900" fill="#0e7490" text-anchor="middle">DMGR</text></g>
+  </g>
+</svg>

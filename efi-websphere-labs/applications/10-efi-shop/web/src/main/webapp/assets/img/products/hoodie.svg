@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Illustration : hoodie">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9d174d"/><stop offset="1" stop-color="#f472b6"/></linearGradient>
+    <radialGradient id="glow" cx=".8" cy=".1" r=".7"><stop offset="0" stop-color="#ffffff" stop-opacity=".35"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#bg)"/>
+  <rect width="400" height="300" fill="url(#glow)"/>
+  <circle cx="40" cy="270" r="70" fill="#ffffff" opacity=".07"/>
+  <circle cx="360" cy="40" r="40" fill="#ffffff" opacity=".08"/>
+  <g>
+  <path d="M155 70c10 20 80 20 90 0l55 30 30 60-35 18-15-25v112H120V153l-15 25-35-18 30-60z" fill="#0b1437"/>
+  <path d="M170 72c5 30 55 30 60 0" fill="none" stroke="#334155" stroke-width="6"/>
+  <g stroke="#94a3b8" stroke-width="3" stroke-linecap="round"><path d="M188 95v35M212 95v35"/></g>
+  <rect x="160" y="200" width="80" height="45" rx="8" fill="#1e293b"/>
+  <text x="200" y="175" font-family="sans-serif" font-size="22" font-weight="900" fill="#2dd4bf" text-anchor="middle">EFI</text>
+  </g>
+</svg>

@@ -1,0 +1,14 @@
+
+Résumé de la vérification des EAR
+  Application              État  Contrôles
+  efi-welcome              FAIL   16/17 réussis 
+  efi-calendar-weather     FAIL   16/17 réussis 
+  efi-chat                 FAIL   16/17 réussis 
+  efi-tasks                FAIL   16/17 réussis 
+  efi-quiz                 FAIL   16/17 réussis 
+  efi-dashboard            FAIL   16/17 réussis 
+  efi-notes                FAIL   16/17 réussis 
+  efi-files                FAIL   16/17 réussis 
+  efi-calculator           FAIL   16/17 réussis 
+  efi-shop                 FAIL   16/17 réussis 
+10 archive(s) non conforme(s).

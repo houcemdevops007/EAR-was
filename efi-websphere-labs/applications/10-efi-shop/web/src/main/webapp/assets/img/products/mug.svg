@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Illustration : mug">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9d174d"/><stop offset="1" stop-color="#f472b6"/></linearGradient>
+    <radialGradient id="glow" cx=".8" cy=".1" r=".7"><stop offset="0" stop-color="#ffffff" stop-opacity=".35"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#bg)"/>
+  <rect width="400" height="300" fill="url(#glow)"/>
+  <circle cx="40" cy="270" r="70" fill="#ffffff" opacity=".07"/>
+  <circle cx="360" cy="40" r="40" fill="#ffffff" opacity=".08"/>
+  <g>
+  <path d="M120 95h130v105a30 30 0 0 1-30 30h-70a30 30 0 0 1-30-30z" fill="#ffffff"/>
+  <path d="M250 120h18a26 26 0 0 1 0 52h-18" fill="none" stroke="#ffffff" stroke-width="14"/>
+  <ellipse cx="185" cy="95" rx="65" ry="12" fill="#fce7f3"/><ellipse cx="185" cy="95" rx="55" ry="8" fill="#78350f"/>
+  <g fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" opacity=".7"><path d="M165 75c-8-12 8-18 0-30M195 72c-8-12 8-18 0-30"/></g>
+  <path d="M160 160l14 14 28-28" stroke="#db2777" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>
